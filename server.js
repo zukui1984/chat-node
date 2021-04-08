@@ -22,6 +22,11 @@ socket.broadcast.emit('message', 'A user has joined the chat');
 // Runs when client disconnects
 socket.on('disconnect', () =>{
   io.emit('message', 'A user has left the chat')
+
+  // Listen for chatMessage
+  socket.on('chatMessage', (msg) => {
+    io.emit('message', msg);
+  });
  });
 });
 
